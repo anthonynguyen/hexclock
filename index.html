@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>hexclock</title>
+	<meta charset="utf-8">
+	<style>
+	@import url(http://fonts.googleapis.com/css?family=Roboto:100);
+	#colour {
+		bottom: 5%;
+		color: #fff;
+		font-family: "Roboto", Verdana, Arial, sans-serif;
+		font-size: 5.4em;
+		font-weight: 100;
+		position: absolute;
+		right: 5%;
+	}
+	</style>
+</head>
+<body>
+	<div id="colour"></div>
+	<script>
+	colour = document.getElementById("colour");
+	function updateColour() {
+		var now = new Date();
+		var hours = now.getHours();
+		var minutes = now.getMinutes();
+		var seconds = now.getSeconds();
+
+		var colours = "#";
+
+		if (hours < 10) colours += "0";
+		colours += hours;
+
+		if (minutes < 10) colours += "0";
+		colours += minutes;
+
+		if (seconds < 10) colours += "0";
+		colours += seconds;
+
+		document.body.style.background = colours;
+		colour.innerHTML = colours;
+
+		setTimeout(updateColour, 1000);
+	}
+
+	updateColour();
+	</script>
+</body>
+</html>
